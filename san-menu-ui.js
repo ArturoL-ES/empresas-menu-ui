@@ -1,17 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-class MenuComponent {
-    constructor() {
-        this.title = 'app';
+class FooComponent {
+    constructor() { }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
     }
 }
-MenuComponent.decorators = [
+FooComponent.decorators = [
     { type: Component, args: [{
-                selector: 'app-menu',
+                selector: 'app-foo',
                 template: `
-    menu-works
+    <p>
+      foo works!
+    </p>
     {{foo}}
-    {{title}}
   `,
                 styles: [`
 
@@ -21,15 +26,30 @@ MenuComponent.decorators = [
 /**
  * @nocollapse
  */
-MenuComponent.ctorParameters = () => [];
-MenuComponent.propDecorators = {
+FooComponent.ctorParameters = () => [];
+FooComponent.propDecorators = {
     'foo': [{ type: Input },],
-    'title': [{ type: Input },],
 };
+
+class FooModule {
+}
+FooModule.decorators = [
+    { type: NgModule, args: [{
+                imports: [
+                    CommonModule
+                ],
+                declarations: [FooComponent],
+                exports: [FooComponent]
+            },] },
+];
+/**
+ * @nocollapse
+ */
+FooModule.ctorParameters = () => [];
 
 /**
  * Generated bundle index. Do not edit.
  */
 
-export { MenuComponent };
+export { FooModule, FooComponent as ɵa };
 //# sourceMappingURL=san-menu-ui.js.map

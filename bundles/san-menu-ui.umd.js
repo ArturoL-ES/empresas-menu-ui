@@ -1,32 +1,54 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@angular/core'], factory) :
-	(factory((global['san-menu-ui'] = {}),global.ng.core));
-}(this, (function (exports,core) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common')) :
+	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common'], factory) :
+	(factory((global['san-menu-ui'] = {}),global.ng.core,global.ng.common));
+}(this, (function (exports,core,common) { 'use strict';
 
-var MenuComponent = /** @class */ (function () {
-    function MenuComponent() {
-        this.title = 'app';
+var FooComponent = /** @class */ (function () {
+    function FooComponent() {
     }
-    return MenuComponent;
+    /**
+     * @return {?}
+     */
+    FooComponent.prototype.ngOnInit = function () {
+    };
+    return FooComponent;
 }());
-MenuComponent.decorators = [
+FooComponent.decorators = [
     { type: core.Component, args: [{
-                selector: 'app-menu',
-                template: "\n    menu-works\n    {{foo}}\n    {{title}}\n  ",
+                selector: 'app-foo',
+                template: "\n    <p>\n      foo works!\n    </p>\n    {{foo}}\n  ",
                 styles: ["\n\n  "]
             },] },
 ];
 /**
  * @nocollapse
  */
-MenuComponent.ctorParameters = function () { return []; };
-MenuComponent.propDecorators = {
+FooComponent.ctorParameters = function () { return []; };
+FooComponent.propDecorators = {
     'foo': [{ type: core.Input },],
-    'title': [{ type: core.Input },],
 };
+var FooModule = /** @class */ (function () {
+    function FooModule() {
+    }
+    return FooModule;
+}());
+FooModule.decorators = [
+    { type: core.NgModule, args: [{
+                imports: [
+                    common.CommonModule
+                ],
+                declarations: [FooComponent],
+                exports: [FooComponent]
+            },] },
+];
+/**
+ * @nocollapse
+ */
+FooModule.ctorParameters = function () { return []; };
 
-exports.MenuComponent = MenuComponent;
+exports.FooModule = FooModule;
+exports.ɵa = FooComponent;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
